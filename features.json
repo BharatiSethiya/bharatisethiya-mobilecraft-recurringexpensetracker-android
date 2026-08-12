@@ -1,0 +1,10 @@
+{
+  "app": "bharatisethiya-mobilecraft-recurringexpensetracker-android",
+  "rubrics": [
+    {"id":1,"criterion":"Expense list shows recurring expenses with monthly equivalents, tag color, recurrence badge Daily/Weekly/Monthly/Yearly, and a total monthly net that reflects negative income.","type":"CUJ","priority":"must-have"},
+    {"id":2,"criterion":"Adding an expense with name, price, currency from 170+, recurrence, first payment date, and tag immediately appears in list with correctly calculated monthly cost and updated total.","type":"CUJ","priority":"must-have"},
+    {"id":3,"criterion":"Tapping an expense opens detail/edit with name, description, price, currency, recurrence, first date, tag with extended palette/custom picker, save validation, and delete with confirmation that leaves data unchanged on cancel.","type":"CUJ","priority":"must-have"},
+    {"id":4,"criterion":"Upcoming payments tab shows chronological timeline of due dates in next 30 days derived from first payment date plus recurrence, with empty and populated states.","type":"CUJ","priority":"must-have"},
+    {"id":5,"criterion":"Tags system with color palette/custom picker and filter chips that filter expense list, plus searchable multi-currency picker 170+ that converts to default currency and persists.","type":"design","priority":"must-have"}
+  ]
+}

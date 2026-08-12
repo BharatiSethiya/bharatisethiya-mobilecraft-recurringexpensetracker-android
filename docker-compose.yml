@@ -1,0 +1,23 @@
+services:
+  app-runner:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: environment/Dockerfile
+      args:
+        ANDROID_BUILD_TOOLS_VERSION: ${ANDROID_BUILD_TOOLS_VERSION:-35.0.0}
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - gradle-cache:/root/.gradle
+      - android-home:/root/.android
+    environment:
+      ANDROID_HOME: /opt/android-sdk-linux
+      ANDROID_SDK_ROOT: /opt/android-sdk-linux
+      ADB_SERVER_SOCKET: ${ADB_SERVER_SOCKET:-tcp:host.docker.internal:5037}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+volumes:
+  gradle-cache:
+  android-home:

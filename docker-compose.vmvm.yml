@@ -1,0 +1,5 @@
+services:
+  app-runner:
+    network_mode: host
+    environment:
+      ADB_SERVER_SOCKET: ${ADB_SERVER_SOCKET:-tcp:127.0.0.1:5037}

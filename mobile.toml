@@ -1,0 +1,73 @@
+[mobile]
+name = "bharatisethiya-mobilecraft-recurringexpensetracker-android"
+description = "Material You recurring expense tracker with monthly conversion, tags, 170+ currencies, upcoming payments timeline, notifications, biometric lock, and widget."
+platform = "android"
+category = "finance"
+
+[mobile.tech]
+stack = ["Android", "Kotlin", "Jetpack Compose", "Room", "Gradle", "Docker Compose"]
+runtime = "native-android"
+ui = "compose"
+
+[mobile.substrate]
+type = "docker-compose"
+service = "app-runner"
+
+[mobile.device]
+provider = "docker-adb-bridge"
+type = "emulator"
+adb_socket = "tcp:host.docker.internal:5037"
+
+[mobile.smoke]
+description = "Launch app, verify expense list total header, add expense via FAB, assert monthly cost appears and total updates, check upcoming tab"
+timeout_ms = 30000
+
+[mobile.android]
+package = "com.bharatisethiya.recurringexpensetracker"
+orientation = "portrait-landscape"
+min_sdk = 23
+target_sdk = 35
+
+[mobile.target]
+repo_url = "https://github.com/DennisBauer/RecurringExpenseTracker"
+repo_ref = "main"
+
+[mobile.commands]
+verify = "./verify.sh"
+start = "./start.sh"
+stop = "./stop.sh"
+smoke = "./scripts/android/smoke.sh"
+
+[mobile.prd]
+file = "PRD.md"
+walkthrough_video = "https://pxl.cl/cgn3m"
+
+[[screenshots]]
+screen = "expense-list-portrait"
+file = "screenshots/expense-list-portrait.png"
+device = "android"
+
+[[screenshots]]
+screen = "add-expense-portrait"
+file = "screenshots/add-expense-portrait.png"
+device = "android"
+
+[[screenshots]]
+screen = "upcoming-portrait"
+file = "screenshots/upcoming-portrait.png"
+device = "android"
+
+[[screenshots]]
+screen = "tags-portrait"
+file = "screenshots/tags-portrait.png"
+device = "android"
+
+[[screenshots]]
+screen = "currency-picker-portrait"
+file = "screenshots/currency-picker-portrait.png"
+device = "android"
+
+[[screenshots]]
+screen = "expense-list-landscape"
+file = "screenshots/expense-list-landscape.png"
+device = "android"
