@@ -1,0 +1,16 @@
+# Coverage matrix
+
+| ID | Surface | State | Fixture | Original checkpoint | Replica checkpoint | Mutates data | Relaunch | Cleanup | Status |
+|---|---|---|---|---|---|---|---|---|---|
+| EX-01 | Expense list | empty | fresh install | original-J01 empty? shows Archive onboarding but after continue empty list with FAB | replica-J01 empty shows No expenses | No | No | N/A | Partially verified |
+| EX-02 | Expense list | populated 5 items | seeded Rent 1200, Netflix, Gym 25 weekly, Salary -3000, Mobile Phone 34.99 | original shows list with monthly $34.99 etc (from small onboarding preview image) | replica shows Rent 1200 orig/mo, Gym 108.33, Salary -3000 income, total net -USD 1675.68 | No | Yes force-stop retains after file persistence fix | N/A | Verified |
+| EX-03 | Add expense | create form | FAB tap | Original EditRecurringExpenseScreen with Name, Description, Price, everyXRecurrence, Recurrence, FirstPayment, EndDate, Tags, ManualConfirmation, MultipleReminders | Replica Add dialog with Name, Desc, Price, Currency 170+, Recurrence chips, Every X, First date, End date, Manual switch, Tag, Save validation, monthly preview using original formula | Yes creates TEST_EXP_ | Yes persists via expenses.json | Cleanup via delete | Verified after fix |
+| EX-04 | Expense detail | open row | existing | Original tap opens detail/edit | Replica tap opens edit with all fields | No | Yes | N/A | Verified |
+| EX-05 | Archive | archive flow | Rent expense | Original Archive Expenses! onboarding, chip Archived, auto-archive | Replica Archive button toggles archivedDate, chip Active/Archived | Yes archivedDate | Yes file | Unarchive | Fixed and verified |
+| EX-06 | Upcoming payments | timeline 30d | seeded | Original UpcomingPaymentsScreen with expandAutoAdvance/ManualConfirmation paid/unpaid remainingDays | Replica Upcoming tab timeline sorted Today/Tomorrow/This Week/MMM dd, remainingDays, Needs confirmation | No | N/A | N/A | Partially verified |
+| EX-07 | Tags | list + create | empty + populated | Original TagsScreen AddTagDialog | Replica Tags tab palette 16 + custom hex | Yes | Yes | Delete tag | Verified |
+| EX-08 | Currency | multi 170+ | default USD EUR | Original currencies.json 170+ | Replica java.util.Currency 170+ searchable + exchangeFactor | No | Yes defaultCurrency | N/A | Partially verified |
+| EX-09 | Settings | backup/restore biometric widget | empty | Original SettingsMainScreen backup rules, biometric, widget transparent/opaque | Replica Settings: Default Currency, Biometric Switch Snackbar, Widget Opaque/Transparent, Backup/Restore file-based honest | Yes backup file | Yes | Delete backup | Fixed and verified |
+| EX-10 | List/Grid view | toggle | Expense list | Original ToggleGridModeButton | Replica toggle semantics Grid view/List view persists isGrid | No | Yes | N/A | Verified |
+| EX-11 | Search/filter | search + tag chips | filtered | Original live substring + chips | Replica search + chips All + tags with dot, active distinct | No | Yes | N/A | Verified |
+| EX-12 | Onboarding Whats new | whats new Archive | first launch | Original shows Whats new Archive Expenses! with Continue | Replica no Whats new onboarding - intentional omission, PRD describes empty state not onboarding | No | N/A | N/A | Intentional omission |
